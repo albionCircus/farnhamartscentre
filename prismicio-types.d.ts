@@ -4,6 +4,67 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type HomeDocumentDataSlicesSlice = TestParagraphSlice;
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * Slice Zone field in *Home*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
+   * Meta Title field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
 interface TestTypeDocumentData {}
 
 /**
@@ -22,7 +83,52 @@ export type TestTypeDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = TestTypeDocument;
+export type AllDocumentTypes = HomeDocument | TestTypeDocument;
+
+/**
+ * Primary content in *TestParagraph → Default → Primary*
+ */
+export interface TestParagraphSliceDefaultPrimary {
+  /**
+   * theFirstParagraph field in *TestParagraph → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: test_paragraph.default.primary.thefirstparagraph
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  thefirstparagraph: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for TestParagraph Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestParagraphSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TestParagraphSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TestParagraph*
+ */
+type TestParagraphSliceVariation = TestParagraphSliceDefault;
+
+/**
+ * TestParagraph Shared Slice
+ *
+ * - **API ID**: `test_paragraph`
+ * - **Description**: TestParagraph
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestParagraphSlice = prismic.SharedSlice<
+  "test_paragraph",
+  TestParagraphSliceVariation
+>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -44,6 +150,17 @@ declare module "@prismicio/client" {
   }
 
   namespace Content {
-    export type { TestTypeDocument, TestTypeDocumentData, AllDocumentTypes };
+    export type {
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
+      TestTypeDocument,
+      TestTypeDocumentData,
+      AllDocumentTypes,
+      TestParagraphSlice,
+      TestParagraphSliceDefaultPrimary,
+      TestParagraphSliceVariation,
+      TestParagraphSliceDefault,
+    };
   }
 }
