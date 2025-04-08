@@ -1,6 +1,9 @@
 {
   "format": "custom",
   "id": "test_type",
+  "label": "Test type",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -10,8 +13,5 @@
         }
       }
     }
-  },
-  "label": "Test type",
-  "repeatable": true,
-  "status": true
+  }
 }

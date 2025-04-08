@@ -13,12 +13,8 @@ export type TestParagraphProps =
  */
 const TestParagraph: FC<TestParagraphProps> = ({ slice }) => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for test_paragraph (variation: {slice.variation})
-      Slices
+    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+      <p>{slice.primary.thefirstparagraph}</p>
     </section>
   );
 };
