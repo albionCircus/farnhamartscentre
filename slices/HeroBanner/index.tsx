@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
+import Bounded from "@/app/components/Bounded";
 
 /**
  * Props for `HeroBanner`.
@@ -12,13 +14,10 @@ export type HeroBannerProps = SliceComponentProps<Content.HeroBannerSlice>;
  */
 const HeroBanner: FC<HeroBannerProps> = ({ slice }) => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for hero_banner (variation: {slice.variation})
-      Slices
-    </section>
+      <Bounded className="flex justify-center">
+        <PrismicNextImage field={slice.primary.image} />
+        <PrismicRichText field={slice.primary.hero_text} />
+      </Bounded>
   );
 };
 
