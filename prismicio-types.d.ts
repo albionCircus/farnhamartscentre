@@ -130,7 +130,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = TestParagraphSlice;
+type HomeDocumentDataSlicesSlice = HeroBannerSlice;
 
 /**
  * Content for Home documents
@@ -278,48 +278,58 @@ export type AllDocumentTypes =
   | TestTypeDocument;
 
 /**
- * Primary content in *TestParagraph → Default → Primary*
+ * Primary content in *HeroBanner → Default → Primary*
  */
-export interface TestParagraphSliceDefaultPrimary {
+export interface HeroBannerSliceDefaultPrimary {
   /**
-   * theFirstParagraph field in *TestParagraph → Default → Primary*
+   * Image field in *HeroBanner → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: test_paragraph.default.primary.thefirstparagraph
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: hero_banner.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
-  thefirstparagraph: prismic.KeyTextField;
+  image: prismic.ImageField<never>;
+
+  /**
+   * Hero Text field in *HeroBanner → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_banner.default.primary.hero_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_text: prismic.RichTextField;
 }
 
 /**
- * Default variation for TestParagraph Slice
+ * Default variation for HeroBanner Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type TestParagraphSliceDefault = prismic.SharedSliceVariation<
+export type HeroBannerSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<TestParagraphSliceDefaultPrimary>,
+  Simplify<HeroBannerSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *TestParagraph*
+ * Slice variation for *HeroBanner*
  */
-type TestParagraphSliceVariation = TestParagraphSliceDefault;
+type HeroBannerSliceVariation = HeroBannerSliceDefault;
 
 /**
- * TestParagraph Shared Slice
+ * HeroBanner Shared Slice
  *
- * - **API ID**: `test_paragraph`
- * - **Description**: TestParagraph
+ * - **API ID**: `hero_banner`
+ * - **Description**: HeroBanner
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type TestParagraphSlice = prismic.SharedSlice<
-  "test_paragraph",
-  TestParagraphSliceVariation
+export type HeroBannerSlice = prismic.SharedSlice<
+  "hero_banner",
+  HeroBannerSliceVariation
 >;
 
 declare module "@prismicio/client" {
@@ -358,10 +368,10 @@ declare module "@prismicio/client" {
       TestTypeDocument,
       TestTypeDocumentData,
       AllDocumentTypes,
-      TestParagraphSlice,
-      TestParagraphSliceDefaultPrimary,
-      TestParagraphSliceVariation,
-      TestParagraphSliceDefault,
+      HeroBannerSlice,
+      HeroBannerSliceDefaultPrimary,
+      HeroBannerSliceVariation,
+      HeroBannerSliceDefault,
     };
   }
 }

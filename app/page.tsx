@@ -6,56 +6,22 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
-// export default async function Page() {
-//   const client = createClient();
-//   const page = await client.getSingle("home").catch(() => notFound());
-
-//   return <SliceZone slices={page.data.slices} components={components} />;
-// }
-
-
 export default async function Page() {
   const client = createClient();
+  const page = await client.getSingle("home").catch(() => notFound());
 
-  try {
-    const page = await client.getSingle("home");
-    return <SliceZone slices={page.data.slices} components={components} />;
-  } catch (err) {
-    console.error("Failed to fetch Prismic home page:", err);
-    notFound();
-  }
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
-
-
-
-// export async function generateMetadata(): Promise<Metadata> {
-//   const client = createClient();
-//   const page = await client.getSingle("home").catch(() => notFound());
-
-//   return {
-//     title: page.data.meta_title,
-//     description: page.data.meta_description,
-//     openGraph: {
-//       images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
-//     },
-//   };
-// }
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
+  const page = await client.getSingle("home").catch(() => notFound());
 
-  try {
-    const page = await client.getSingle("home");
-
-    return {
-      title: page.data.meta_title,
-      description: page.data.meta_description,
-      openGraph: {
-        images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
-      },
-    };
-  } catch (err) {
-    console.error("Failed to fetch Prismic metadata:", err);
-    notFound();
-  }
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+    openGraph: {
+      images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
+    },
+  };
 }

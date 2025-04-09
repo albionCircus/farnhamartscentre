@@ -1,0 +1,39 @@
+{
+  "id": "hero_banner",
+  "type": "SharedSlice",
+  "name": "HeroBanner",
+  "description": "HeroBanner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 1260,
+              "height": 520
+            },
+            "thumbnails": []
+          }
+        },
+        "hero_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Hero Text",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "heading1,paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

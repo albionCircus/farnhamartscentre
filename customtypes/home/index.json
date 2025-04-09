@@ -11,7 +11,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "test_paragraph": {
+            "hero_banner": {
               "type": "SharedSlice"
             }
           }

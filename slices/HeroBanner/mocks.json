@@ -1,0 +1,43 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+					"width": 4160,
+					"height": 3120
+				},
+				"url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118?rect=0%2C702%2C4160%2C1717&w=1260&h=520",
+				"width": 1260,
+				"height": 520,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 702
+					},
+					"background": "transparent"
+				},
+				"alt": "understanding",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"hero_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laborum ad laboris do non anim qui incididunt labore pariatur."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
