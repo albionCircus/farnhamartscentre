@@ -9,12 +9,11 @@
 				"type": "Text"
 			},
 			"link": {
-				"key": "73f03e3d-7341-46cb-80aa-2ee136bfa279",
+				"key": "deff5da8-9b7b-4363-a1a1-dd576f85971a",
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
-					"url": "https://prismic.io",
-					"text": "fifty"
+					"url": "https://slicemachine.dev"
 				}
 			},
 			"child_links": {
@@ -35,11 +34,10 @@
 								"link",
 								{
 									"__TYPE__": "LinkContent",
-									"key": "98feb96c-c8a3-42c2-afa3-10d44fca9457",
+									"key": "1fe7e793-ec13-4d31-802b-cbb2212c334c",
 									"value": {
 										"__TYPE__": "ExternalLink",
-										"url": "http://twitter.com",
-										"text": "student"
+										"url": "https://slicemachine.dev"
 									}
 								}
 							]
