@@ -4,4 +4,5 @@ import dynamic from "next/dynamic";
 
 export const components = {
   hero_banner: dynamic(() => import("./HeroBanner")),
+  navigation_menu_item: dynamic(() => import("./NavigationMenuItem")),
 };

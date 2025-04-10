@@ -191,6 +191,51 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+type NavigationDocumentDataSlicesSlice = NavigationMenuItemSlice;
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Logo field in *Navigation*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice = never;
 
 /**
@@ -256,6 +301,7 @@ export type AllDocumentTypes =
   | BlogDocument
   | BlogPostDocument
   | HomeDocument
+  | NavigationDocument
   | PageDocument;
 
 /**
@@ -313,6 +359,78 @@ export type HeroBannerSlice = prismic.SharedSlice<
   HeroBannerSliceVariation
 >;
 
+/**
+ * Item in *NavigationMenuItem → Default → Primary → child_links*
+ */
+export interface NavigationMenuItemSliceDefaultPrimaryChildLinksItem {}
+
+/**
+ * Primary content in *NavigationMenuItem → Default → Primary*
+ */
+export interface NavigationMenuItemSliceDefaultPrimary {
+  /**
+   * Label field in *NavigationMenuItem → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_menu_item.default.primary.label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Link field in *NavigationMenuItem → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_menu_item.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * child_links field in *NavigationMenuItem → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_menu_item.default.primary.child_links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  child_links: prismic.GroupField<
+    Simplify<NavigationMenuItemSliceDefaultPrimaryChildLinksItem>
+  >;
+}
+
+/**
+ * Default variation for NavigationMenuItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationMenuItemSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavigationMenuItemSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NavigationMenuItem*
+ */
+type NavigationMenuItemSliceVariation = NavigationMenuItemSliceDefault;
+
+/**
+ * NavigationMenuItem Shared Slice
+ *
+ * - **API ID**: `navigation_menu_item`
+ * - **Description**: NavigationMenuItem
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavigationMenuItemSlice = prismic.SharedSlice<
+  "navigation_menu_item",
+  NavigationMenuItemSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -343,6 +461,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -351,6 +472,11 @@ declare module "@prismicio/client" {
       HeroBannerSliceDefaultPrimary,
       HeroBannerSliceVariation,
       HeroBannerSliceDefault,
+      NavigationMenuItemSlice,
+      NavigationMenuItemSliceDefaultPrimaryChildLinksItem,
+      NavigationMenuItemSliceDefaultPrimary,
+      NavigationMenuItemSliceVariation,
+      NavigationMenuItemSliceDefault,
     };
   }
 }
