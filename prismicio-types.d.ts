@@ -252,30 +252,11 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-interface TestTypeDocumentData {}
-
-/**
- * Test type document from Prismic
- *
- * - **API ID**: `test_type`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type TestTypeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<TestTypeDocumentData>,
-    "test_type",
-    Lang
-  >;
-
 export type AllDocumentTypes =
   | BlogDocument
   | BlogPostDocument
   | HomeDocument
-  | PageDocument
-  | TestTypeDocument;
+  | PageDocument;
 
 /**
  * Primary content in *HeroBanner → Default → Primary*
@@ -365,8 +346,6 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
-      TestTypeDocument,
-      TestTypeDocumentData,
       AllDocumentTypes,
       HeroBannerSlice,
       HeroBannerSliceDefaultPrimary,
