@@ -6,6 +6,22 @@ import {
 import { enableAutoPreviews } from "@prismicio/next";
 import sm from "./slicemachine.config.json";
 
+
+
+
+
+
+
+export async function getNavigation() {
+  const client = createClient()
+  const nav = await client.getSingle('navigation', { fetchLinks: [''] })
+  return nav.data.slices
+}
+
+
+
+
+
 /**
  * The project's Prismic repository name.
  */

@@ -22,7 +22,28 @@
 				"value": [
 					{
 						"__TYPE__": "GroupItemContent",
-						"value": []
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "author",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "98feb96c-c8a3-42c2-afa3-10d44fca9457",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "student"
+									}
+								}
+							]
+						]
 					}
 				]
 			}

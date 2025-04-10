@@ -35,7 +35,26 @@
           "config": {
             "label": "child_links",
             "repeat": true,
-            "fields": {}
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": ""
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": false,
+                  "allowText": true,
+                  "repeat": false
+                }
+              }
+            }
           }
         }
       },

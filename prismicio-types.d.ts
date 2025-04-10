@@ -362,7 +362,27 @@ export type HeroBannerSlice = prismic.SharedSlice<
 /**
  * Item in *NavigationMenuItem → Default → Primary → child_links*
  */
-export interface NavigationMenuItemSliceDefaultPrimaryChildLinksItem {}
+export interface NavigationMenuItemSliceDefaultPrimaryChildLinksItem {
+  /**
+   * Label field in *NavigationMenuItem → Default → Primary → child_links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_menu_item.default.primary.child_links[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * Link field in *NavigationMenuItem → Default → Primary → child_links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_menu_item.default.primary.child_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
 
 /**
  * Primary content in *NavigationMenuItem → Default → Primary*
