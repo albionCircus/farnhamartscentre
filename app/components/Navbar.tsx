@@ -5,16 +5,21 @@ import { SliceZone, SliceZoneLike } from '@prismicio/react'
 import { Components } from './slices'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Bounded from './Bounded'
+import { PrismicNextImage } from '@prismicio/next'
+import Link from 'next/link'
+import { ImageField } from '@prismicio/client'
+import styles from "@/app/custom.module.css"
 
 type Props = {
   slices: SliceZoneLike
+  logo: ImageField | null
 }
 
-export default function Navbar({ slices }: Props) {
+export default function Navbar({ slices, logo }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const mobileRef = useRef<HTMLDivElement>(null)
 
-  // Close on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (
@@ -30,9 +35,15 @@ export default function Navbar({ slices }: Props) {
   }, [isOpen])
 
   return (
-    <nav className="bg-white border-b px-4 py-3 relative z-50">
+    <Bounded as="nav" className="w-full lg:max-w-[1300px] margin0auto">
       <div className="flex justify-between items-center">
-        <span className="text-xl font-bold">MySite</span>
+        <Link href="/" className="flex items-center gap-2">
+          {logo ? (
+            <PrismicNextImage field={logo} className={`${styles.navLogo}`} priority />
+          ) : (
+            <span className="text-xl font-bold">Logo</span>
+          )}
+        </Link>
 
         {/* Mobile toggle */}
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
@@ -61,6 +72,6 @@ export default function Navbar({ slices }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </Bounded>
   )
 }

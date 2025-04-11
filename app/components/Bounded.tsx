@@ -13,7 +13,7 @@ export default function Bounded({
     ...restProps      
 }: BoundedProps){
     return (
-       <Comp className={clsx("relative px-4 py-4 md:py-8 md:px-6 lg:py-8", className)} {...restProps}>
+       <Comp className={clsx("relative px-4 pt-4 pb-0 md:py-8 md:pb-0 md:px-6 lg:pt-8 lg:pb-0", className)} {...restProps}>
             {children}
        </Comp>
     )
