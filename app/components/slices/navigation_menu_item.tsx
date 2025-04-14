@@ -117,7 +117,7 @@ export default function NavigationMenuItem({ slice }: Props) {
       <div className="flex items-center justify-between gap-1">
         <PrismicNextLink
           field={link}
-          className={`block py-2 font-semibold hover:underline ${
+          className={`block py-2 font-semibold hover:underline decoration-1 underline-offset-4 ${
             isActive || hasActiveChild ? 'text-blue-600' : ''
           }`}
           onClick={(e) => {
