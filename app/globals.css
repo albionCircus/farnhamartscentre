@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Start custom colors */
+
+@theme {
+  --color-charcoal: #3e3e3e;
+}
+
 /* Start fonts */
 
 :root {
@@ -22,6 +28,10 @@ body, p, span, li {
   text-wrap: balance;
 }
 
+p {
+  margin: 10px 0 0;
+}
+
 h1 {
   font-size: 2.3em;
 }
@@ -36,10 +46,10 @@ h2 {
   font-size: 2em;
 }
 @media (min-width: 600px) and (max-width: 959px) {
-  h2 { font-size: 2.5em; }
+  h2 { font-size: 2.3em; }
 }
 @media (min-width: 960px) {
-  h2 { font-size: 2.9em; }
+  h2 { font-size: 2.6em; }
 }
 
 h3 {
@@ -62,8 +72,18 @@ h4 {
   h4 { font-size: 1.9em; }
 }
 
-/* End fonts */
+/* General styles */
 
 .margin0auto {
   margin: 0 auto;
+}
+
+.honeyPot {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
 }

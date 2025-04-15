@@ -1,0 +1,42 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"newsletter_banner_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Velit elit est aute eu nulla enim velit."
+						}
+					}
+				]
+			},
+			"newsletter_banner_hero": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+					"width": 2747,
+					"height": 4120
+				},
+				"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?rect=0%2C1569%2C2747%2C981&w=840&h=300",
+				"width": 840,
+				"height": 300,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 1569
+					},
+					"background": "transparent"
+				},
+				"alt": "become",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

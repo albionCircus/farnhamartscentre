@@ -1,0 +1,39 @@
+{
+  "id": "newsletter",
+  "type": "SharedSlice",
+  "name": "NewsletterBanner",
+  "description": "Newsletter",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "newsletter_banner_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Newsletter Banner Text",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,heading3"
+          }
+        },
+        "newsletter_banner_hero": {
+          "type": "Image",
+          "config": {
+            "label": "Newsletter Banner Hero",
+            "constraint": {
+              "width": 840,
+              "height": 300
+            },
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

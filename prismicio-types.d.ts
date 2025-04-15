@@ -130,7 +130,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = HeroBannerSlice;
+type HomeDocumentDataSlicesSlice = NewsletterSlice | HeroBannerSlice;
 
 /**
  * Content for Home documents
@@ -451,6 +451,61 @@ export type NavigationMenuItemSlice = prismic.SharedSlice<
   NavigationMenuItemSliceVariation
 >;
 
+/**
+ * Primary content in *NewsletterBanner → Default → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+  /**
+   * Newsletter Banner Text field in *NewsletterBanner → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.newsletter_banner_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  newsletter_banner_text: prismic.RichTextField;
+
+  /**
+   * Newsletter Banner Hero field in *NewsletterBanner → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.default.primary.newsletter_banner_hero
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  newsletter_banner_hero: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for NewsletterBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *NewsletterBanner*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * NewsletterBanner Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<
+  "newsletter",
+  NewsletterSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -497,6 +552,10 @@ declare module "@prismicio/client" {
       NavigationMenuItemSliceDefaultPrimary,
       NavigationMenuItemSliceVariation,
       NavigationMenuItemSliceDefault,
+      NewsletterSlice,
+      NewsletterSliceDefaultPrimary,
+      NewsletterSliceVariation,
+      NewsletterSliceDefault,
     };
   }
 }
