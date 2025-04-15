@@ -3,6 +3,7 @@ import "./globals.css";
 import { headingFont, bodyFont } from './fonts';
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { getNavigation } from "@/prismicio";
 
 export const metadata: Metadata = {
@@ -18,11 +19,9 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${headingFont.variable} ${bodyFont.variable} antialiased`}>
       <body>
-        <Navbar
-          slices={navigation.data.slices}
-          logo={navigation.data.logo}
-        />
-        <main>{children}</main>
+        <Navbar slices={navigation.data.slices} logo={navigation.data.logo} />
+          <main className="content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

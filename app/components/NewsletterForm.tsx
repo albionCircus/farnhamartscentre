@@ -29,7 +29,7 @@ export function NewsletterForm() {
     return (
         <>
             <form onSubmit={handleSubmit} className="pt-4">
-                <input type="hidden" name="subject" value="New contact form submission from Limelights website" aria-hidden="true" />
+                <input type="hidden" name="subject" value="Newsletter sign up submission" aria-hidden="true" />
                 <input type="checkbox" name="botcheck" className="honeyPot" autoComplete="off" aria-hidden="true" />
                 <div className="mb-6">
                     <label htmlFor="email" className="block text-gray-700 text-sm mb-1">Email*</label>

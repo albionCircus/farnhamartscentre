@@ -16,7 +16,7 @@ export type NewsletterProps = SliceComponentProps<Content.NewsletterSlice>;
 const Newsletter: FC<NewsletterProps> = ({ slice }) => {
   return (
     <Bounded as="section" data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className="flex justify-center">
-      <div className="flex flex-col justify-center bg-[#f8df9e] text-charcoal p-10 w-full sm:w-[420px]">
+      <div className="flex flex-col justify-center bg-[#f8df9e] text-charcoal p-5 sm:p-10 w-full sm:w-[420px]">
         <PrismicRichText field={slice.primary.newsletter_banner_text}/>
         <NewsletterForm />
       </div>
