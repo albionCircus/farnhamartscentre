@@ -1,0 +1,108 @@
+{
+  "format": "page",
+  "id": "exhibition_post",
+  "label": "Exhibition Post",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "heading": {
+        "type": "Text",
+        "config": {
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "original_date": {
+        "type": "Date",
+        "config": {
+          "label": "Original Date",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {
+            "width": 800,
+            "height": 400
+          },
+          "thumbnails": []
+        }
+      },
+      "article": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Article",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,hyperlink"
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "Category",
+          "placeholder": "",
+          "options": ["Realism", "Impressionism", "Expressionism", "Abstract"]
+        }
+      },
+      "author": {
+        "type": "Select",
+        "config": {
+          "label": "Author",
+          "placeholder": "",
+          "options": ["Craig Riley", "Lauren Coe", "Stuart Radcliffe"]
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}

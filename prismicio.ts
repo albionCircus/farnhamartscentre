@@ -27,8 +27,8 @@ export const repositoryName =
 const routes: Route[] = [
   { type: "home", path: "/" },
   // { type: "page", path: "/:uid" },
-  // { type: "blog", path: "/blog" },
-  // { type: "blog_post", path: "/blog/:uid" },
+  { type: "exhibition", path: "/exhibitions" },
+  { type: "exhibition_post", path: "/exhibitions/:uid" },
 ];
 
 /**

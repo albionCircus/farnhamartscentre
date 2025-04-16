@@ -1,20 +1,35 @@
 {
   "format": "page",
-  "id": "blog_post",
+  "id": "exhibition",
+  "label": "Exhibition",
+  "repeatable": false,
+  "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "type": "UID",
+      "heading": {
+        "type": "Text",
         "config": {
-          "label": "UID"
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "hero_image": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Image",
+          "constraint": {
+            "width": 2000,
+            "height": 1000
+          },
+          "thumbnails": []
         }
       },
       "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
           "choices": {}
-        },
-        "fieldset": "Slice Zone",
-        "type": "Slices"
+        }
       }
     },
     "SEO & Metadata": {
@@ -44,8 +59,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "Blog Post",
-  "repeatable": true,
-  "status": true
+  }
 }

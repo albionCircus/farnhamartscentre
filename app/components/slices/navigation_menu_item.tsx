@@ -13,42 +13,49 @@ type Props = SliceComponentProps<Content.NavigationMenuItemSlice>
 export default function NavigationMenuItem({ slice }: Props) {
   const { label, link, child_links } = slice.primary
   const [open, setOpen] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+  const [hasActiveChild, setHasActiveChild] = useState(false)
+  const [activeChildIndexes, setActiveChildIndexes] = useState<number[]>([])
+  const [hydrated, setHydrated] = useState(false)
+
   const pathname = usePathname()
   const menuRef = useRef<HTMLLIElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const dropdownRef = useRef<HTMLUListElement>(null)
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const hasChildren = child_links?.length > 0
-
   const url = asLink(link)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  let isActive = false
-  let hasActiveChild = false
+  useEffect(() => {
+    setHydrated(true)
 
-  if (typeof window !== 'undefined') {
     if (url?.startsWith('/')) {
       try {
         const currentPath = new URL(url, window.location.origin).pathname.replace(/\/$/, '')
-        isActive = pathname === currentPath
+        setIsActive(pathname === currentPath)
       } catch {}
     }
 
     if (hasChildren) {
-      for (const item of child_links) {
+      const activeIndexes: number[] = []
+
+      child_links.forEach((item, idx) => {
         const childUrl = asLink(item.link)
         if (childUrl?.startsWith('/')) {
           try {
             const childPath = new URL(childUrl, window.location.origin).pathname.replace(/\/$/, '')
             if (pathname === childPath) {
-              hasActiveChild = true
-              break
+              activeIndexes.push(idx)
             }
           } catch {}
         }
-      }
+      })
+
+      setActiveChildIndexes(activeIndexes)
+      setHasActiveChild(activeIndexes.length > 0)
     }
-  }
+  }, [pathname, url, hasChildren, child_links])
 
   // Close on outside click
   useEffect(() => {
@@ -118,7 +125,7 @@ export default function NavigationMenuItem({ slice }: Props) {
         <PrismicNextLink
           field={link}
           className={`block py-2 font-semibold hover:underline decoration-1 underline-offset-4 ${
-            isActive || hasActiveChild ? 'text-blue-600' : ''
+            hydrated && (isActive || hasActiveChild) ? 'text-blue-600' : ''
           }`}
           onClick={(e) => {
             if (isMobile && hasChildren) {
@@ -169,33 +176,23 @@ export default function NavigationMenuItem({ slice }: Props) {
                 className="bg-white shadow-lg rounded-lg overflow-hidden pointer-events-auto"
                 role="menu"
               >
-                {child_links.map((item, idx) => {
-                  const childUrl = asLink(item.link)
-
-                  let childActive = false
-                  if (childUrl?.startsWith('/') && typeof window !== 'undefined') {
-                    try {
-                      const childPath = new URL(childUrl, window.location.origin).pathname.replace(/\/$/, '')
-                      childActive = pathname === childPath
-                    } catch {}
-                  }
-
-                  return (
-                    <li key={idx} role="none">
-                      <PrismicNextLink
-                        field={item.link}
-                        onClick={handleLinkClick}
-                        className={`flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 focus:bg-gray-100 transition-colors duration-150 ${
-                          childActive ? 'text-blue-600 font-semibold' : ''
-                        }`}
-                        role="menuitem"
-                        tabIndex={0}
-                      >
-                        {item.label}
-                      </PrismicNextLink>
-                    </li>
-                  )
-                })}
+                {child_links.map((item, idx) => (
+                  <li key={idx} role="none">
+                    <PrismicNextLink
+                      field={item.link}
+                      onClick={handleLinkClick}
+                      className={`flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 focus:bg-gray-100 transition-colors duration-150 ${
+                        hydrated && activeChildIndexes.includes(idx)
+                          ? 'text-blue-600 font-semibold'
+                          : ''
+                      }`}
+                      role="menuitem"
+                      tabIndex={0}
+                    >
+                      {item.label}
+                    </PrismicNextLink>
+                  </li>
+                ))}
               </motion.ul>
             )}
           </AnimatePresence>
