@@ -14,7 +14,7 @@ interface PageProps {
   }>;   
 }
 
-const POSTS_PER_PAGE = 6;
+const POSTS_PER_PAGE = 1;
 
 export default async function Page(props: PageProps) {
   const searchParams = await props.searchParams || {}; // Fallback to an empty object if undefined from line 11

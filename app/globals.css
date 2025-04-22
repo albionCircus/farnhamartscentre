@@ -85,6 +85,14 @@ small {
     font-size: 0.95em;
 }
 
+cite {
+  font-style: normal;
+  font-size: 0.7em;
+}
+@media (min-width: 960px) {
+  cite { font-size: 0.85em; }
+}
+
 /* General styles */
 
 body {

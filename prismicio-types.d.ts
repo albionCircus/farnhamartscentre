@@ -162,7 +162,7 @@ interface ExhibitionPostDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   category: prismic.SelectField<
-    "Realism" | "Impressionism" | "Expressionism" | "Abstract"
+    "Talk" | "Exhibition" | "Late" | "Workshop" | "Tour" | "Film"
   >;
 
   /**
@@ -237,7 +237,10 @@ export type ExhibitionPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = NewsletterSlice | HeroBannerSlice;
+type HomeDocumentDataSlicesSlice =
+  | WhatsOnSlice
+  | NewsletterSlice
+  | HeroBannerSlice;
 
 /**
  * Content for Home documents
@@ -613,6 +616,51 @@ export type NewsletterSlice = prismic.SharedSlice<
   NewsletterSliceVariation
 >;
 
+/**
+ * Primary content in *WhatsOn → Default → Primary*
+ */
+export interface WhatsOnSliceDefaultPrimary {
+  /**
+   * Heading field in *WhatsOn → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+}
+
+/**
+ * Default variation for WhatsOn Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhatsOnSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WhatsOnSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *WhatsOn*
+ */
+type WhatsOnSliceVariation = WhatsOnSliceDefault;
+
+/**
+ * WhatsOn Shared Slice
+ *
+ * - **API ID**: `whats_on`
+ * - **Description**: WhatsOn
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhatsOnSlice = prismic.SharedSlice<
+  "whats_on",
+  WhatsOnSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -663,6 +711,10 @@ declare module "@prismicio/client" {
       NewsletterSliceDefaultPrimary,
       NewsletterSliceVariation,
       NewsletterSliceDefault,
+      WhatsOnSlice,
+      WhatsOnSliceDefaultPrimary,
+      WhatsOnSliceVariation,
+      WhatsOnSliceDefault,
     };
   }
 }

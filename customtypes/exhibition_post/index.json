@@ -58,7 +58,7 @@
         "config": {
           "label": "Category",
           "placeholder": "",
-          "options": ["Realism", "Impressionism", "Expressionism", "Abstract"]
+          "options": ["Talk", "Exhibition", "Late", "Workshop", "Tour", "Film"]
         }
       },
       "author": {
