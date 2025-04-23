@@ -81,6 +81,10 @@ h3 + p {
   margin: 10px 0 0;
 }
 
+article p {
+  margin-bottom: 10px;
+}
+
 small {
     font-size: 0.95em;
 }
