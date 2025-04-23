@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import ThreeExhibitions from "@/app/components/ThreeExhibitions";
+import FeaturedWhatsOn from "@/app/components/FeaturedWhatsOn";
 import Bounded from "@/app/components/Bounded";
 
 /**
@@ -18,7 +18,7 @@ const WhatsOn: FC<WhatsOnProps> = ({ slice }) => {
       <div className="text-center mb-2">
         <PrismicRichText field={slice.primary.heading} />
       </div>
-      <ThreeExhibitions />
+      <FeaturedWhatsOn />
     </Bounded>
   );
 };

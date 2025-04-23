@@ -5,7 +5,6 @@ import { SliceZone, SliceZoneLike } from '@prismicio/react'
 import { Components } from './slices'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import Bounded from './Bounded'
 import { PrismicNextImage } from '@prismicio/next'
 import Link from 'next/link'
 import { ImageField } from '@prismicio/client'
@@ -35,7 +34,7 @@ export default function Navbar({ slices, logo }: Props) {
   }, [isOpen])
 
   return (
-    <Bounded as="nav" className="w-full lg:max-w-[1300px] margin0auto">
+    <nav className="relative px-4 py-6 md:pt-8 md:pb-0 md:px-6 w-full lg:max-w-[1300px] margin0auto">
       <div className="flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           {logo ? (
@@ -72,6 +71,6 @@ export default function Navbar({ slices, logo }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
-    </Bounded>
+    </nav>
   )
 }

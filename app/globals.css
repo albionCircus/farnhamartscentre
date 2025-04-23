@@ -18,7 +18,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.1;
-  text-wrap: balance;
 }
 
 body, p, span, li {
@@ -26,7 +25,6 @@ body, p, span, li {
   font-size: 1em;
   font-weight: 500;
   line-height: 1.5;
-  text-wrap: balance;
 }
 
 h1 {

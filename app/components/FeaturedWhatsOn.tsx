@@ -10,7 +10,7 @@ interface PageProps {
   }>;
 }
 
-const POSTS_PER_PAGE = 3;
+const POSTS_PER_PAGE = 6;
 
 export default async function ThreeExhibitions(props: PageProps) {
   const searchParams = await props.searchParams || {}; // Fallback to an empty object if undefined from line 11
