@@ -5,7 +5,6 @@ import { components } from "@/slices";
 import { PrismicDocument } from "@prismicio/client";
 import Bounded from "../components/Bounded";
 import Pagination from "../components/Pagination";
-
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 interface PageProps {
