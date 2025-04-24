@@ -1,8 +1,8 @@
 {
-  "id": "whats_on",
+  "id": "featured_whats_on",
   "type": "SharedSlice",
-  "name": "WhatsOn",
-  "description": "WhatsOn",
+  "name": "FeaturedWhatsOn",
+  "description": "FeaturedWhatsOn",
   "variations": [
     {
       "id": "default",

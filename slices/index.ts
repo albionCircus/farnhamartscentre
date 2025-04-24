@@ -3,8 +3,8 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  featured_whats_on: dynamic(() => import("./FeaturedWhatsOn")),
   hero_banner: dynamic(() => import("./HeroBanner")),
   navigation_menu_item: dynamic(() => import("./NavigationMenuItem")),
   newsletter: dynamic(() => import("./NewsletterBanner")),
-  whats_on: dynamic(() => import("./WhatsOn")),
 };

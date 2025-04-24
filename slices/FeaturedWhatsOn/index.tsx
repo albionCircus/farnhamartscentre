@@ -7,7 +7,7 @@ import Bounded from "@/app/components/Bounded";
 /**
  * Props for `WhatsOn`.
  */
-export type WhatsOnProps = SliceComponentProps<Content.WhatsOnSlice>;
+export type WhatsOnProps = SliceComponentProps<Content.FeaturedWhatsOnSlice>;
 
 /**
  * Component for "WhatsOn" Slices.
@@ -15,7 +15,7 @@ export type WhatsOnProps = SliceComponentProps<Content.WhatsOnSlice>;
 const WhatsOn: FC<WhatsOnProps> = ({ slice }) => {
   return (
     <Bounded as="section" data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className="text-charcoal margin0auto w-full max-w-[1300px]">
-      <div className="text-center mb-2">
+      <div className="text-center mb-4">
         <PrismicRichText field={slice.primary.heading} />
       </div>
       <FeaturedWhatsOn />
