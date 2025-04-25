@@ -7,6 +7,8 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PrismicNextImage } from "@prismicio/next";
 import WhatsOnSidebar from "@/app/components/WhatsOnSidebar";
+import { Suspense } from "react";
+import SidebarSkeleton from "@/app/ui/skeletons";
 
 type Params = { uid: string };
 
@@ -28,7 +30,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           </article>
           <aside className="w-full max-w-[400px] sm:max-w-full lg:max-w-[400px] pt-1.5 lg:mt-0">
             <h4 className="text-charcoal mb-3">What&apos;s On</h4>
-            <WhatsOnSidebar currentUid={uid} />
+            <Suspense fallback={<SidebarSkeleton />}>
+              <WhatsOnSidebar currentUid={uid} />
+            </Suspense>
           </aside>
         </div>
         <SliceZone slices={page.data.slices} components={components} />
