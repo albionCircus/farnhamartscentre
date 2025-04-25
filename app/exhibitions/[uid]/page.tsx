@@ -26,9 +26,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
             <PrismicRichText field={page.data.article} />
             <p><em>Post by:  {page.data.author}</em></p>
           </article>
-          <aside className="w-full max-w-[400px] sm:max-w-full lg:max-w-[400px] mt-3 lg:mt-0">
+          <aside className="w-full max-w-[400px] sm:max-w-full lg:max-w-[400px] pt-1.5 lg:mt-0">
             <h4 className="text-charcoal mb-3">What&apos;s On</h4>
-            <WhatsOnSidebar />
+            <WhatsOnSidebar currentUid={uid} />
           </aside>
         </div>
         <SliceZone slices={page.data.slices} components={components} />
