@@ -3,6 +3,8 @@ import { createClient } from "@/prismicio";
 import { PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { RichTextField } from "@prismicio/client";
+import styles from "@/app/custom.module.css";
+
 
 interface PageProps {
   searchParams?: Promise<{
@@ -10,9 +12,9 @@ interface PageProps {
   }>;
 }
 
-const POSTS_PER_PAGE = 6;
+const POSTS_PER_PAGE = 3;
 
-export default async function SixExhibitions(props: PageProps) {
+export default async function WhatsOnSidebar(props: PageProps) {
   const searchParams = await props.searchParams || {}; // Fallback to an empty object if undefined from line 11
   const client = createClient();
 
@@ -47,10 +49,10 @@ export default async function SixExhibitions(props: PageProps) {
   });
 
   return (
-    <div className="grid auto-rows-min sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-8">
+    <div className={`flex flex-col sm:flex-row lg:flex-col ${styles.sidebarArticles}`}>
           {posts.map((post: PrismicDocument, index: number) => (
             <PrismicNextLink document={post} key={index}>
-              <article className="bg-white">
+              <article className="bg-white mb-10">
                 <PrismicNextImage field={post.data.image} />
                 <div className="p-3.5 border-b-1 border-l-1 border-r-1">
                   <p className="text-gray-500 border-2 border-gray-200 w-fit px-1.5 p-0.5 rounded-md mb-3 tracking-wide">
