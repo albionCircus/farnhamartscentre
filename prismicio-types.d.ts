@@ -407,12 +407,247 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+type WhatsOnDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Whats On documents
+ */
+interface WhatsOnDocumentData {
+  /**
+   * Heading field in *Whats On*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Hero Image field in *Whats On*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on.hero_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Whats On*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<WhatsOnDocumentDataSlicesSlice> /**
+   * Meta Title field in *Whats On*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: whats_on.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Whats On*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: whats_on.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Whats On*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Whats On document from Prismic
+ *
+ * - **API ID**: `whats_on`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WhatsOnDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<WhatsOnDocumentData>,
+    "whats_on",
+    Lang
+  >;
+
+type WhatsOnPostDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Whats On Post documents
+ */
+interface WhatsOnPostDocumentData {
+  /**
+   * Heading field in *Whats On Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Original Date field in *Whats On Post*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.original_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  original_date: prismic.DateField;
+
+  /**
+   * Description field in *Whats On Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Image field in *Whats On Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Article field in *Whats On Post*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.article
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  article: prismic.RichTextField;
+
+  /**
+   * Category field in *Whats On Post*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<
+    "Talk" | "Exhibition" | "Late" | "Workshop" | "Tour" | "Film"
+  >;
+
+  /**
+   * Author field in *Whats On Post*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.author
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  author: prismic.SelectField<
+    "Craig Riley" | "Lauren Coe" | "Stuart Radcliffe"
+  >;
+
+  /**
+   * Slice Zone field in *Whats On Post*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<WhatsOnPostDocumentDataSlicesSlice> /**
+   * Meta Title field in *Whats On Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: whats_on_post.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Whats On Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: whats_on_post.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Whats On Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Whats On Post document from Prismic
+ *
+ * - **API ID**: `whats_on_post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WhatsOnPostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<WhatsOnPostDocumentData>,
+    "whats_on_post",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | ExhibitionDocument
   | ExhibitionPostDocument
   | HomeDocument
   | NavigationDocument
-  | PageDocument;
+  | PageDocument
+  | WhatsOnDocument
+  | WhatsOnPostDocument;
 
 /**
  * Primary content in *FeaturedWhatsOn → Default → Primary*
@@ -697,6 +932,12 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      WhatsOnDocument,
+      WhatsOnDocumentData,
+      WhatsOnDocumentDataSlicesSlice,
+      WhatsOnPostDocument,
+      WhatsOnPostDocumentData,
+      WhatsOnPostDocumentDataSlicesSlice,
       AllDocumentTypes,
       FeaturedWhatsOnSlice,
       FeaturedWhatsOnSliceDefaultPrimary,

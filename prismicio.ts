@@ -29,6 +29,8 @@ const routes: Route[] = [
   // { type: "page", path: "/:uid" },
   { type: "exhibition", path: "/exhibitions" },
   { type: "exhibition_post", path: "/exhibitions/:uid" },
+  { type: "whats_on", path: "/whats_on" },
+  { type: "whats_on_post", path: "/whats_on/:uid" },
 ];
 
 /**
