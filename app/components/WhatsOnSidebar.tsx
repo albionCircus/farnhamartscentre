@@ -14,7 +14,7 @@ const POSTS_PER_PAGE = 3;
 export default async function WhatsOnSidebar({ currentUid }: WhatsOnSidebarProps) {
   const client = createClient();
 
-  const { results: posts } = await client.getByType("exhibition_post", {
+  const { results: posts } = await client.getByType("whats_on_post", {
     orderings: [
       { field: "data.original_date", direction: "desc" },
       { field: "document.first_publication_date", direction: "desc" },

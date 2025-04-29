@@ -21,7 +21,7 @@ export default async function SixExhibitions(props: PageProps) {
 
   // Fetch the posts for the current page
   const { results: posts } = await client.getByType(
-    "exhibition_post",
+    "whats_on_post",
     {
       orderings: [
         { field: "data.original_date", direction: "desc" },
