@@ -9,7 +9,7 @@ import Pagination from "../components/Pagination";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import CategoryFilter from "../components/CategoryFilter";
 
-// in Next.js 14, searchParams is now a Promise that needs to be explicitly awaited before you can access its properties.
+// in Next.js 14, searchParams is now a Promise that needs to be explicitly awaited before you can access its properties
 interface PageProps {
   searchParams: Promise<{
     page?: string;
@@ -74,11 +74,11 @@ export default async function Page({ searchParams }: PageProps) {
         <div className="grid auto-rows-min sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-8">
           {posts.map((post: PrismicDocument, index: number) => (
             <PrismicNextLink document={post} key={index}>
-              <article className="bg-sky-100 min-h-full border-b-2 border-orange-600">
+              <article className="bg-white">
                 <PrismicNextImage field={post.data.image} />
-                <div className="m-5">
-                  <p className="w-fit bg-white p-1.5 rounded-lg mb-3">
-                    {post.data.category}
+                <div className="p-3.5 border-b-1 border-l-1 border-r-1 sm:min-h-60 md:min-h-72 xl:min-h-52">
+                <p className="text-gray-500 border-2 border-gray-200 w-fit px-1.5 p-0.5 rounded-md mb-3 tracking-wide">
+                    <cite>{post.data.category}</cite>
                   </p>
                   <h4 className="text-sky-950">{post.data.heading}</h4>
                   <p className="pt-2">{post.data.description}</p>

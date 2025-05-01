@@ -113,7 +113,7 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice = NewsletterSlice | HeroBannerSlice;
 
 /**
  * Content for Page documents
