@@ -113,7 +113,10 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = NewsletterSlice | HeroBannerSlice;
+type PageDocumentDataSlicesSlice =
+  | BodyContentSlice
+  | NewsletterSlice
+  | HeroBannerSlice;
 
 /**
  * Content for Page documents
@@ -174,34 +177,12 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type WhatsOnDocumentDataSlicesSlice = never;
+type WhatsOnDocumentDataSlicesSlice = NewsletterSlice | HeroBannerSlice;
 
 /**
  * Content for Whats On documents
  */
 interface WhatsOnDocumentData {
-  /**
-   * Heading field in *Whats On*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: whats_on.heading
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  heading: prismic.KeyTextField;
-
-  /**
-   * Hero Image field in *Whats On*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: whats_on.hero_image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  hero_image: prismic.ImageField<never>;
-
   /**
    * Slice Zone field in *Whats On*
    *
@@ -413,6 +394,51 @@ export type AllDocumentTypes =
   | PageDocument
   | WhatsOnDocument
   | WhatsOnPostDocument;
+
+/**
+ * Primary content in *BodyContent → Default → Primary*
+ */
+export interface BodyContentSliceDefaultPrimary {
+  /**
+   * Rich Text Box field in *BodyContent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: body_content.default.primary.rich_text_box
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  rich_text_box: prismic.RichTextField;
+}
+
+/**
+ * Default variation for BodyContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BodyContentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BodyContentSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BodyContent*
+ */
+type BodyContentSliceVariation = BodyContentSliceDefault;
+
+/**
+ * BodyContent Shared Slice
+ *
+ * - **API ID**: `body_content`
+ * - **Description**: BodyContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BodyContentSlice = prismic.SharedSlice<
+  "body_content",
+  BodyContentSliceVariation
+>;
 
 /**
  * Primary content in *FeaturedWhatsOn → Default → Primary*
@@ -698,6 +724,10 @@ declare module "@prismicio/client" {
       WhatsOnPostDocumentData,
       WhatsOnPostDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BodyContentSlice,
+      BodyContentSliceDefaultPrimary,
+      BodyContentSliceVariation,
+      BodyContentSliceDefault,
       FeaturedWhatsOnSlice,
       FeaturedWhatsOnSliceDefaultPrimary,
       FeaturedWhatsOnSliceVariation,

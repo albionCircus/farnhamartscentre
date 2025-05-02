@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"rich_text_box": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sint voluptate officia cupidatat nisi elit aliqua dolore ad magna velit amet minim. Enim excepteur qui reprehenderit sint magna mollit incididunt nisi magna ut dolor minim dolor minim. Minim id sit minim quis tempor ex nostrud proident ea Lorem ut veniam mollit tempor."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

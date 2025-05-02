@@ -1,0 +1,28 @@
+{
+  "id": "body_content",
+  "type": "SharedSlice",
+  "name": "BodyContent",
+  "description": "BodyContent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "rich_text_box": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Rich Text Box",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading2,heading3,heading4,strong,em,hyperlink,image,embed,list-item,o-list-item"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
