@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import Bounded from "@/app/components/Bounded";
 
 /**
  * Props for `BodyContent`.
@@ -12,13 +13,9 @@ export type BodyContentProps = SliceComponentProps<Content.BodyContentSlice>;
  */
 const BodyContent: FC<BodyContentProps> = ({ slice }) => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for body_content (variation: {slice.variation})
-      Slices
-    </section>
+    <Bounded as='section' className="flex justify-center" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+      <PrismicRichText field={slice.primary.rich_text_box} />
+    </Bounded>
   );
 };
 

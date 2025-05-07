@@ -671,9 +671,49 @@ export type NewsletterSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *NewsletterBanner → Blue - Image Right → Primary*
+ */
+export interface NewsletterSliceBlueImageRightPrimary {
+  /**
+   * Newsletter Banner Text field in *NewsletterBanner → Blue - Image Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.blueImageRight.primary.newsletter_banner_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  newsletter_banner_text: prismic.RichTextField;
+
+  /**
+   * Newsletter Banner Hero field in *NewsletterBanner → Blue - Image Right → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.blueImageRight.primary.newsletter_banner_hero
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  newsletter_banner_hero: prismic.ImageField<never>;
+}
+
+/**
+ * Blue - Image Right variation for NewsletterBanner Slice
+ *
+ * - **API ID**: `blueImageRight`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceBlueImageRight = prismic.SharedSliceVariation<
+  "blueImageRight",
+  Simplify<NewsletterSliceBlueImageRightPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *NewsletterBanner*
  */
-type NewsletterSliceVariation = NewsletterSliceDefault;
+type NewsletterSliceVariation =
+  | NewsletterSliceDefault
+  | NewsletterSliceBlueImageRight;
 
 /**
  * NewsletterBanner Shared Slice
@@ -743,8 +783,10 @@ declare module "@prismicio/client" {
       NavigationMenuItemSliceDefault,
       NewsletterSlice,
       NewsletterSliceDefaultPrimary,
+      NewsletterSliceBlueImageRightPrimary,
       NewsletterSliceVariation,
       NewsletterSliceDefault,
+      NewsletterSliceBlueImageRight,
     };
   }
 }

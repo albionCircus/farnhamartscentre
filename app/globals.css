@@ -5,6 +5,7 @@
 @theme {
   --color-charcoal: #3e3e3e;
   --color-realTeal: #4d6a79;
+  --color-reinaBlue: #2bc5d1;
 }
 
 /* Start fonts */
@@ -120,4 +121,10 @@ body {
   height: 0;
   width: 0;
   z-index: -1;
+}
+
+/* Slice variations */
+
+.blueImageRight {
+  background: #2bc5d1;
 }
