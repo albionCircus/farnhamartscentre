@@ -80,6 +80,10 @@ h3 + p {
   margin: 10px 0 0;
 }
 
+h3 + ul {
+  margin-top: 20px;
+}
+
 article p {
   margin-bottom: 10px;
   color: #3e3e3e;
@@ -103,6 +107,19 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+ul {
+  list-style: disc;
+}
+
+.desktopNavItem li {
+  list-style: none;
+}
+
+li {
+  margin-top: 10px;
+  list-style-position: inside;
 }
 
 .content {

@@ -17,13 +17,7 @@ export type NewsletterProps = SliceComponentProps<Content.NewsletterSlice>;
 const Newsletter: FC<NewsletterProps> = ({ slice }) => {
   return (
     <Bounded as="section" data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className="flex justify-center">
-        {/* <div className={clsx("flex flex-col justify-center bg-[#f8df9e] text-charcoal p-5 sm:p-10 w-full sm:w-[420px]", slice.variation === "default" && "blueImageRight")}> */}
-        
-
-        <div className={clsx("flex flex-col justify-center p-5 sm:p-10 w-full sm:w-[420px] text-charcoal", {"bg-[#f8df9e]": slice.variation === "default", "bg-[#2bc5d1] order-2" : slice.variation === "blueImageRight"})}>
-
-
-
+        <div className={clsx("flex flex-col justify-center p-5 sm:p-10 w-full sm:w-[420px] text-charcoal", {"bg-[#f8df9e]" : slice.variation === "default", "bg-[#2bc5d1] order-2" : slice.variation === "blueImageRight"})}>
           <PrismicRichText field={slice.primary.newsletter_banner_text}/>
           <NewsletterForm />
         </div>

@@ -13,7 +13,7 @@ export type BodyContentProps = SliceComponentProps<Content.BodyContentSlice>;
  */
 const BodyContent: FC<BodyContentProps> = ({ slice }) => {
   return (
-    <Bounded as='section' className="flex justify-center" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+    <Bounded as='section' className="flex justify-center flex-col w-full lg:max-w-[1300px] margin0auto" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
       <PrismicRichText field={slice.primary.rich_text_box} />
     </Bounded>
   );
