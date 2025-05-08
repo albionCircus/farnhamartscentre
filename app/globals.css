@@ -76,6 +76,10 @@ h2 + p {
   margin: 10px 0 0;
 }
 
+h3 {
+  margin-bottom: 10px;
+}
+
 h3 + p {
   margin: 10px 0 0;
 }
@@ -107,6 +111,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.BodyContent p {
+ margin-top: 10px;
 }
 
 ul {
