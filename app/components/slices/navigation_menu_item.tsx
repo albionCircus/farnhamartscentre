@@ -125,7 +125,7 @@ export default function NavigationMenuItem({ slice }: Props) {
         <PrismicNextLink
           field={link}
           className={`block py-2 font-semibold hover:underline decoration-1 underline-offset-4 ${
-            hydrated && (isActive || hasActiveChild) ? 'text-blue-600' : ''
+            hydrated && (isActive || hasActiveChild) ? 'text-cyan-600' : ''
           }`}
           onClick={(e) => {
             if (isMobile && hasChildren) {
@@ -183,7 +183,7 @@ export default function NavigationMenuItem({ slice }: Props) {
                       onClick={handleLinkClick}
                       className={`flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 focus:bg-gray-100 transition-colors duration-150 ${
                         hydrated && activeChildIndexes.includes(idx)
-                          ? 'text-blue-600 font-semibold'
+                          ? 'text-cyan-600 font-semibold'
                           : ''
                       }`}
                       role="menuitem"
