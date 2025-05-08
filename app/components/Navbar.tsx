@@ -50,7 +50,7 @@ export default function Navbar({ slices, logo }: Props) {
         </button>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex gap-6 desktopNavItem">
+        <ul className="hidden md:flex gap-6">
           <SliceZone slices={slices} components={Components} />
         </ul>
       </div>

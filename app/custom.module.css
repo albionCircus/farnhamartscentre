@@ -2,7 +2,7 @@
 
 .transparentBox {
   background-color: rgba(0, 0, 0, .5);
-  border-radius: none;
+  border: none;
   padding: 10px;
   color: #ffffff;
   top: 50%;
@@ -20,16 +20,9 @@
         height: auto;
         padding: 20px;
         border-radius: 5px;
-    }
-}
-@media (min-width: 960px) and (max-width: 1199px) {
-    .transparentBox {
-        transform: translate(-85%, -50%);
-    }
-}
-@media (min-width: 1200px) {
-    .transparentBox {
-        transform: translate(-103%, -50%);
+        top: 50%;
+        left: 5%;
+        transform: translate(5%, -50%);
     }
 }
 
