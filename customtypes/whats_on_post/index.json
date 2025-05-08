@@ -58,7 +58,15 @@
         "config": {
           "label": "Category",
           "placeholder": "",
-          "options": ["Talk", "Exhibition", "Late", "Workshop", "Tour", "Film"]
+          "options": [
+            "Talk",
+            "Exhibition",
+            "Late",
+            "Workshop",
+            "Tour",
+            "Film",
+            "Children"
+          ]
         }
       },
       "author": {

@@ -313,7 +313,7 @@ interface WhatsOnPostDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   category: prismic.SelectField<
-    "Talk" | "Exhibition" | "Late" | "Workshop" | "Tour" | "Film"
+    "Talk" | "Exhibition" | "Late" | "Workshop" | "Tour" | "Film" | "Children"
   >;
 
   /**
