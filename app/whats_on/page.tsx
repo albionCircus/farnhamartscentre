@@ -76,7 +76,7 @@ export default async function Page({ searchParams }: PageProps) {
             <PrismicNextLink document={post} key={index}>
               <article className="bg-white">
                 <PrismicNextImage field={post.data.image} />
-                <div className="p-3.5 border-b-1 border-l-1 border-r-1 sm:min-h-60 md:min-h-72 xl:min-h-52">
+                <div className="p-3.5 border-b-1 border-l-1 border-r-1 sm:min-h-[240px]">
                 <p className="text-gray-500 border-2 border-gray-200 w-fit px-1.5 p-0.5 rounded-md mb-3 tracking-wide">
                     <cite>{post.data.category}</cite>
                   </p>
