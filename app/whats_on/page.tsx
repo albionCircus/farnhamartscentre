@@ -17,7 +17,7 @@ interface PageProps {
   }>;
 }
 
-const POSTS_PER_PAGE = 12;
+const POSTS_PER_PAGE = 6;
 
 export default async function Page({ searchParams }: PageProps) {
   const client = createClient();
@@ -37,9 +37,8 @@ export default async function Page({ searchParams }: PageProps) {
   const { results: posts, total_results_size } = await client.getByType("whats_on_post", {
     filters,
     orderings: [
-      { field: "data.original_date", direction: "desc" },
-      { field: "document.first_publication_date", direction: "desc" },
-    ],
+        { field: "my.whats_on_post.original_date", direction: "desc" },
+      ],
     pageSize: POSTS_PER_PAGE,
     page: currentPage,
   });
@@ -47,6 +46,7 @@ export default async function Page({ searchParams }: PageProps) {
   posts.sort((a, b) => {
     const dateA = a.data.original_date || a.first_publication_date;
     const dateB = b.data.original_date || b.first_publication_date;
+    
     return new Date(dateB).getTime() - new Date(dateA).getTime();
   });
 

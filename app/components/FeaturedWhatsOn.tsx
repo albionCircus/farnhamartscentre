@@ -24,9 +24,7 @@ export default async function SixExhibitions(props: PageProps) {
     "whats_on_post",
     {
       orderings: [
-        { field: "data.original_date", direction: "desc" },
-        // { field: "document.last_publication_date", direction: "desc" },
-        { field: "document.first_publication_date", direction: "desc" },
+        { field: "my.whats_on_post.original_date", direction: "desc" },
       ],
       pageSize: POSTS_PER_PAGE,
       page: currentPage,
@@ -35,14 +33,8 @@ export default async function SixExhibitions(props: PageProps) {
 
   // If original_date is present, override the sorting manually
   posts.sort((a, b) => {
-    const dateA =
-      a.data.original_date ||
-      // a.last_publication_date ||
-      a.first_publication_date;
-    const dateB =
-      b.data.original_date ||
-      // b.last_publication_date ||
-      b.first_publication_date;
+    const dateA = a.data.original_date || a.first_publication_date;
+    const dateB = b.data.original_date || b.first_publication_date;
     return new Date(dateB).getTime() - new Date(dateA).getTime();
   });
 
