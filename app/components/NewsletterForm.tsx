@@ -1,7 +1,10 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 
 export function NewsletterForm() {
+
+    const [submitted, setSubmitted] = useState(false);
+
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         
@@ -22,12 +25,19 @@ export function NewsletterForm() {
         
         const result = await response.json();
         if (result.success) {
-            console.log(result);
+            setSubmitted(true);
+        } else {
+            alert("Something went wrong. Please try again.");
         }
     }
 
     return (
         <>
+            {submitted ? (
+                <p className="block mt-2.5">
+                    <strong>Thanks for signing up!</strong>
+                </p>
+            ) : (
             <form onSubmit={handleSubmit} className="pt-4">
                 <input type="hidden" name="subject" value="Newsletter sign up submission" aria-hidden="true" />
                 <input type="checkbox" name="botcheck" className="honeyPot" autoComplete="off" aria-hidden="true" />
@@ -37,6 +47,7 @@ export function NewsletterForm() {
                 </div>
                 <button type="submit" aria-label="submit" className="bg-charcoal hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
             </form>
+            )}
         </>
     );
 }
