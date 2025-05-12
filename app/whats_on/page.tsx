@@ -7,7 +7,8 @@ import { PrismicDocument } from "@prismicio/client";
 import Bounded from "../components/Bounded";
 import Pagination from "../components/Pagination";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import CategoryFilter from "../components/CategoryFilter";
+import ClientCategoryFilter from "../components/ClientCategoryFilter";
+
 
 // in Next.js 14, searchParams is now a Promise that needs to be explicitly awaited before you can access its properties
 interface PageProps {
@@ -66,11 +67,10 @@ export default async function Page({ searchParams }: PageProps) {
     <>
       <SliceZone slices={page.data.slices} components={components} />
       <Bounded className="margin0auto w-full max-w-[1300px]">
-        <CategoryFilter
+        <ClientCategoryFilter
           allCategories={allCategories}
           selectedCategory={selectedCategory}
         />
-
         <div className="grid auto-rows-min sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-8">
           {posts.map((post: PrismicDocument, index: number) => (
             <PrismicNextLink document={post} key={index}>
