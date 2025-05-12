@@ -8,4 +8,5 @@ export const components = {
   hero_banner: dynamic(() => import("./HeroBanner")),
   navigation_menu_item: dynamic(() => import("./NavigationMenuItem")),
   newsletter: dynamic(() => import("./NewsletterBanner")),
+  office_location_map: dynamic(() => import("./OfficeLocationMap")),
 };

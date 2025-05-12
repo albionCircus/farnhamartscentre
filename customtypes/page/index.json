@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "office_location_map": {
+              "type": "SharedSlice"
+            },
             "body_content": {
               "type": "SharedSlice"
             },

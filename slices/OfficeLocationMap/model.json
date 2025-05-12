@@ -1,0 +1,28 @@
+{
+  "id": "office_location_map",
+  "type": "SharedSlice",
+  "name": "OfficeLocationMap",
+  "description": "OfficeLocationMap",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "location_details": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Location details",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,heading3,heading4,heading5,heading6,em,strong"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

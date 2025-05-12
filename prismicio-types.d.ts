@@ -114,6 +114,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | OfficeLocationMapSlice
   | BodyContentSlice
   | NewsletterSlice
   | HeroBannerSlice;
@@ -727,6 +728,51 @@ export type NewsletterSlice = prismic.SharedSlice<
   NewsletterSliceVariation
 >;
 
+/**
+ * Primary content in *OfficeLocationMap → Default → Primary*
+ */
+export interface OfficeLocationMapSliceDefaultPrimary {
+  /**
+   * Location details field in *OfficeLocationMap → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: office_location_map.default.primary.location_details
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  location_details: prismic.RichTextField;
+}
+
+/**
+ * Default variation for OfficeLocationMap Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OfficeLocationMapSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OfficeLocationMapSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OfficeLocationMap*
+ */
+type OfficeLocationMapSliceVariation = OfficeLocationMapSliceDefault;
+
+/**
+ * OfficeLocationMap Shared Slice
+ *
+ * - **API ID**: `office_location_map`
+ * - **Description**: OfficeLocationMap
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OfficeLocationMapSlice = prismic.SharedSlice<
+  "office_location_map",
+  OfficeLocationMapSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -787,6 +833,10 @@ declare module "@prismicio/client" {
       NewsletterSliceVariation,
       NewsletterSliceDefault,
       NewsletterSliceBlueImageRight,
+      OfficeLocationMapSlice,
+      OfficeLocationMapSliceDefaultPrimary,
+      OfficeLocationMapSliceVariation,
+      OfficeLocationMapSliceDefault,
     };
   }
 }
