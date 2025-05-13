@@ -1,5 +1,3 @@
-// export const revalidate = 60; // Revalidate this page every 60 seconds
-
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { asImageSrc } from "@prismicio/client";
