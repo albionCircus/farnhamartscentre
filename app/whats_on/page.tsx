@@ -1,5 +1,3 @@
-export const revalidate = 60; // Revalidate this page every 60 seconds
-
 import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
