@@ -53,6 +53,13 @@
           "multi": "paragraph,hyperlink"
         }
       },
+      "date_range": {
+        "type": "Text",
+        "config": {
+          "label": "Date range",
+          "placeholder": ""
+        }
+      },
       "category": {
         "type": "Select",
         "config": {

@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { Calendar } from 'lucide-react'
 
 interface PostGridProps {
   posts: PrismicDocument[];
@@ -72,11 +73,15 @@ export default function PostGrid({ posts }: PostGridProps) {
               </p>
               <h4 className="text-sky-950">{post.data.heading}</h4>
               <p className="pt-2">{post.data.description}</p>
-              <p className="my-3">
+              {/* <p className="my-3">
                 {new Date(
                   post.data.original_date || Date.now()
                 ).toLocaleDateString("en-GB")}
-              </p>
+              </p> */}
+              <div className="flex mt-8">
+                <Calendar size={24} className="mr-1.5 stroke-gray-500" />
+                <p>{post.data.date_range}</p>
+              </div>
             </div>
           </article>
         </PrismicNextLink>

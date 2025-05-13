@@ -305,6 +305,17 @@ interface WhatsOnPostDocumentData {
   article: prismic.RichTextField;
 
   /**
+   * Date range field in *Whats On Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: whats_on_post.date_range
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  date_range: prismic.KeyTextField;
+
+  /**
    * Category field in *Whats On Post*
    *
    * - **Field Type**: Select

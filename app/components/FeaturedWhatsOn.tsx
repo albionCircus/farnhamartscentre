@@ -3,6 +3,7 @@ import { createClient } from "@/prismicio";
 import { PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { RichTextField } from "@prismicio/client";
+import { Calendar } from "lucide-react";
 
 interface PageProps {
   searchParams?: Promise<{
@@ -49,9 +50,13 @@ export default async function SixExhibitions(props: PageProps) {
                     <cite>{post.data.category}</cite>
                   </p>
                   <h4 className="text-charcoal">{post.data.heading}</h4>
-                  <p className="pt-3.5 text-gray-500">
+                  {/* <p className="pt-3.5 text-gray-500">
                     <small>{new Date(post.data.original_date || Date.now()).toLocaleDateString("en-GB")}</small>
-                  </p>
+                  </p> */}
+                  <div className="flex mt-8">
+                    <Calendar size={24} className="mr-1.5 stroke-gray-500" />
+                    <p>{post.data.date_range}</p>
+                  </div>
                   {Array.isArray(post.data.description) && (
                     <PrismicRichText field={post.data.description as RichTextField} />
                   )}
