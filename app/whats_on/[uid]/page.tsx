@@ -23,9 +23,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           <article className="w-full max-w-[800px] lg:mr-6">
             <h1 className="text-charcoal">{page.data.heading}</h1>
             <PrismicNextImage field={page.data.image} className="py-3" />                
-            <h4 className="text-charcoal">{page.data.description}</h4>
-            <p className="my-3">{new Date(page.data.original_date || Date.now()).toLocaleDateString("en-GB")}</p>
-            <PrismicRichText field={page.data.article} />
+            <h4 className="text-charcoal my-3">{page.data.description}</h4>
+            <h5 className="text-charcoal">{page.data.date_range}</h5>
+            {/* <p className="my-3">{new Date(page.data.original_date || Date.now()).toLocaleDateString("en-GB")}</p> */}
+            <div className="mt-3">
+              <PrismicRichText field={page.data.article} />
+            </div>
             <p><em>Post by:  {page.data.author}</em></p>
           </article>
           <aside className="w-full max-w-[400px] sm:max-w-full lg:max-w-[400px] pt-1.5 lg:mt-0">
