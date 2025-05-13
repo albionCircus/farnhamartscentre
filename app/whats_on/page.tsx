@@ -3,12 +3,10 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { filter } from "@prismicio/client";
 import { components } from "@/slices";
-import { PrismicDocument } from "@prismicio/client";
 import Bounded from "../components/Bounded";
 import Pagination from "../components/Pagination";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import ClientCategoryFilter from "../components/ClientCategoryFilter";
-
+import PostGrid from "../components/PostGrid";
 
 // in Next.js 14, searchParams is now a Promise that needs to be explicitly awaited before you can access its properties
 interface PageProps {
@@ -67,33 +65,17 @@ export default async function Page({ searchParams }: PageProps) {
     <>
       <SliceZone slices={page.data.slices} components={components} />
       <Bounded className="margin0auto w-full max-w-[1300px]">
-        <ClientCategoryFilter
-          allCategories={allCategories}
-          selectedCategory={selectedCategory}
-        />
-        <div className="grid auto-rows-min sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-8">
-          {posts.map((post: PrismicDocument, index: number) => (
-            <PrismicNextLink document={post} key={index}>
-              <article className="bg-white">
-                <PrismicNextImage field={post.data.image} />
-                <div className="p-3.5 border-b-1 border-l-1 border-r-1 sm:min-h-[240px]">
-                <p className="text-gray-500 border-2 border-gray-200 w-fit px-1.5 p-0.5 rounded-md mb-3 tracking-wide">
-                    <cite>{post.data.category}</cite>
-                  </p>
-                  <h4 className="text-sky-950">{post.data.heading}</h4>
-                  <p className="pt-2">{post.data.description}</p>
-                  <p className="my-3">
-                    {new Date(
-                      post.data.original_date || Date.now()
-                    ).toLocaleDateString("en-GB")}
-                  </p>
-                </div>
-              </article>
-            </PrismicNextLink>
-          ))}
-        </div>
+        <section id="posts-section" className="min-h-[600px]">
+          <ClientCategoryFilter
+            allCategories={allCategories}
+            selectedCategory={selectedCategory}
+          />
+          
+          {/* New PostGrid component with smooth transitions */}
+          <PostGrid posts={posts} />
 
-        <Pagination currentPage={currentPage} totalPages={totalPages} />
+          <Pagination currentPage={currentPage} totalPages={totalPages} />
+        </section>
       </Bounded>
     </>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import CategoryFilter from "./CategoryFilter";
 
 interface ClientCategoryFilterProps {
@@ -12,18 +12,34 @@ export default function ClientCategoryFilter({
   allCategories,
   selectedCategory,
 }: ClientCategoryFilterProps) {
-  const scrollTargetRef = useRef<HTMLDivElement>(null);
-
+  // Add loading state for content transitions
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Handle filter change notification
+  const handleFilterChange = () => {
+    setIsLoading(true);
+    
+    // Reset loading state after a short delay
+    // This will be used by the parent component to fade out/in content
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  };
+  
   return (
     <>
       <CategoryFilter
         allCategories={allCategories}
         selectedCategory={selectedCategory}
-        scrollToRef={scrollTargetRef}
+        onFilterChange={handleFilterChange}
       />
-
-      {/* Pass this ref to the parent to scroll to */}
-      <div ref={scrollTargetRef} />
+      
+      {/* Expose loading state to parent component via data attribute */}
+      <div 
+        id="category-filter-state" 
+        data-loading={isLoading.toString()} 
+        className="hidden" 
+      />
     </>
   );
 }
