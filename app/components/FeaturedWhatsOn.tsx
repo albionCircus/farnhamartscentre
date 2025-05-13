@@ -53,7 +53,7 @@ export default async function SixExhibitions(props: PageProps) {
                   {/* <p className="pt-3.5 text-gray-500">
                     <small>{new Date(post.data.original_date || Date.now()).toLocaleDateString("en-GB")}</small>
                   </p> */}
-                  <div className="flex mt-8">
+                  <div className="flex mt-4">
                     <Calendar size={24} className="mr-1.5 stroke-gray-500" />
                     <p>{post.data.date_range}</p>
                   </div>
