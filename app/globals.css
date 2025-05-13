@@ -99,7 +99,7 @@ h3 + ul {
 }
 
 h5 {
-  margin: 10px 0 0;
+  margin: 5px 0;
 }
 
 article p {
@@ -129,10 +129,6 @@ body {
 
 .BodyContent p {
  margin-bottom: 10px;
-}
-
-.BodyContent h4 {
-  margin-bottom: 10px;
 }
 
 ul {
