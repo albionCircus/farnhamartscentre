@@ -1,7 +1,7 @@
 /* Home page transparent box */
 
 .transparentBox {
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .2);
   border: none;
   padding: 10px;
   color: #ffffff;
@@ -16,6 +16,7 @@
 }
 @media (min-width: 960px) {
     .transparentBox {
+        background-color: rgba(0, 0, 0, .4);
         width: fit-content;
         height: auto;
         padding: 20px;
@@ -23,6 +24,26 @@
         top: 50%;
         left: 3%;
         transform: translate(3%, -50%);
+    }
+}
+
+.transparentBox h1 {
+    text-shadow: 2px 2px 8px #000000;
+}
+@media (min-width: 960px) {
+    .transparentBox h1 {
+        text-shadow: none;
+    }
+}
+
+.transparentBox p {
+    text-shadow: 2px 2px 8px #000000;
+    font-weight: 600;
+}
+@media (min-width: 960px) {
+    .transparentBox p {
+        text-shadow: none;
+        font-weight: normal;
     }
 }
 

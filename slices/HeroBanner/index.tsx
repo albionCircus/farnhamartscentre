@@ -16,8 +16,8 @@ export type HeroBannerProps = SliceComponentProps<Content.HeroBannerSlice>;
 const HeroBanner: FC<HeroBannerProps> = ({ slice }) => {
   return (
       <Bounded className="flex justify-center">
-        <div className="relative w-auto">
-          <PrismicNextImage field={slice.primary.image} priority />
+        <div className="relative w-auto h-[400px] sm:h-auto">
+          <PrismicNextImage field={slice.primary.image} priority className="heroImage" />
           <div className={`absolute ${styles.transparentBox}`}>
             <PrismicRichText field={slice.primary.hero_text} />
           </div>
