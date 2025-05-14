@@ -22,7 +22,7 @@ const Newsletter: FC<NewsletterProps> = ({ slice }) => {
           <NewsletterForm />
         </div>
         <div className="hidden sm:block">
-          <PrismicNextImage field={slice.primary.newsletter_banner_hero} className="h-full object-cover"/>
+          <PrismicNextImage field={slice.primary.newsletter_banner_hero} className="w-full h-full object-cover"/>
         </div>
     </Bounded>
   );
