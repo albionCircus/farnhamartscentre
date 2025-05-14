@@ -1,5 +1,3 @@
-export const revalidate = 60; // Revalidate this page every 60 seconds
-
 import type { Metadata } from "next";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
