@@ -20,7 +20,7 @@ export default function Navbar({ slices, logo }: Props) {
   const mobileRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         isOpen &&
         mobileRef.current &&
@@ -29,8 +29,29 @@ export default function Navbar({ slices, logo }: Props) {
         setIsOpen(false)
       }
     }
-    document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
+
+    const handleLinkClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      const link = target.closest('a') as HTMLAnchorElement | null
+
+      if (
+        link &&
+        mobileRef.current?.contains(link) &&
+        link.getAttribute('href')?.startsWith('/')
+      ) {
+        setTimeout(() => {
+          setIsOpen(false)
+        }, 100)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('click', handleLinkClick)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('click', handleLinkClick)
+    }
   }, [isOpen])
 
   return (
