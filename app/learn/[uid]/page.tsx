@@ -10,43 +10,40 @@ import { PrismicNextImage } from "@prismicio/next";
 import { Suspense } from "react";
 import SidebarSkeleton from "@/app/ui/skeletons";
 
-type PageProps = {
-  params: {
-    uid: string;
-  };
-};
-
-export default async function Page({ params }: PageProps) {
+// Inline param type avoids conflict with Next.js auto-generated types
+export default async function Page({ params }: { params: { uid: string } }) {
   const { uid } = params;
   const client = createClient();
   const page = await client.getByUID("learn_post", uid).catch(() => notFound());
 
   return (
     <Bounded>
-        <div className="flex flex-col lg:flex-row space-between justify-between margin0auto w-full max-w-[1250px] max-w">
-          <article className="w-full max-w-[800px] lg:mr-6">
-            <h1 className="text-charcoal">{page.data.heading}</h1>
-            <PrismicNextImage field={page.data.image} className="py-3" />                
-            <h4 className="text-charcoal my-3">{page.data.description}</h4>
-            <h5 className="text-charcoal">{page.data.date_range}</h5>
-            <div className="mt-3">
-              <PrismicRichText field={page.data.article} />
-            </div>
-          </article>
-          <aside className="w-full max-w-[400px] sm:max-w-full lg:max-w-[400px] pt-1.5 lg:mt-0">
-            <h4 className="text-charcoal mb-3">What&apos;s On</h4>
-            <Suspense fallback={<SidebarSkeleton />}>
-              <WhatsOnSidebar currentUid={uid} />
-            </Suspense>
-          </aside>
-        </div>
-        <SliceZone slices={page.data.slices} components={components} />
+      <div className="flex flex-col lg:flex-row space-between justify-between margin0auto w-full max-w-[1250px] max-w">
+        <article className="w-full max-w-[800px] lg:mr-6">
+          <h1 className="text-charcoal">{page.data.heading}</h1>
+          <PrismicNextImage field={page.data.image} className="py-3" />
+          <h4 className="text-charcoal my-3">{page.data.description}</h4>
+          <h5 className="text-charcoal">{page.data.date_range}</h5>
+          <div className="mt-3">
+            <PrismicRichText field={page.data.article} />
+          </div>
+        </article>
+        <aside className="w-full max-w-[400px] sm:max-w-full lg:max-w-[400px] pt-1.5 lg:mt-0">
+          <h4 className="text-charcoal mb-3">What&apos;s On</h4>
+          <Suspense fallback={<SidebarSkeleton />}>
+            <WhatsOnSidebar currentUid={uid} />
+          </Suspense>
+        </aside>
+      </div>
+      <SliceZone slices={page.data.slices} components={components} />
     </Bounded>
   );
 }
 
-  export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  
+// Inline type again for params in generateMetadata
+export async function generateMetadata(
+  { params }: { params: { uid: string } }
+): Promise<Metadata> {
   const { uid } = params;
   const client = createClient();
   const page = await client.getByUID("learn_post", uid).catch(() => notFound());
