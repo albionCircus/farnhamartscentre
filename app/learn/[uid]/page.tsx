@@ -10,9 +10,13 @@ import { PrismicNextImage } from "@prismicio/next";
 import { Suspense } from "react";
 import SidebarSkeleton from "@/app/ui/skeletons";
 
-type Params = { uid: string };
+type PageProps = {
+  params: {
+    uid: string;
+  };
+};
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params }: PageProps) {
   const { uid } = params;
   const client = createClient();
   const page = await client.getByUID("learn_post", uid).catch(() => notFound());
@@ -41,11 +45,8 @@ export default async function Page({ params }: { params: Params }) {
   );
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+  export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  
   const { uid } = params;
   const client = createClient();
   const page = await client.getByUID("learn_post", uid).catch(() => notFound());
