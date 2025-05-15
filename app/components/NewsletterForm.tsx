@@ -45,7 +45,7 @@ export function NewsletterForm() {
                     <label htmlFor="email" className="block text-gray-700 text-sm mb-1">Email*</label>
                     <input type="email" name="email" required placeholder="email@example.com" aria-label="Enter your email address" className="bg-white rounded w-full max-w-72 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                 </div>
-                <button type="submit" aria-label="submit" className="bg-charcoal hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+                <button type="submit" aria-label="submit" className="bg-realTeal hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
             </form>
             )}
         </>
