@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   return (
     <Bounded>
-      <div className="flex flex-col lg:flex-row space-between justify-between margin0auto w-full max-w-[1250px] max-w">
+        <div className="flex flex-col lg:flex-row space-between justify-between margin0auto w-full max-w-[1250px] max-w">
           <article className="w-full max-w-[800px] lg:mr-6">
             <h1 className="text-charcoal">{page.data.heading}</h1>
             <PrismicNextImage field={page.data.image} className="py-3" />                

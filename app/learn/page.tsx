@@ -22,12 +22,17 @@ export default async function Page() {
     <Bounded className="margin0auto w-full max-w-[1300px]">
         <div className="grid auto-rows-min sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-8">
           {posts.map((post: PrismicDocument, index: number) => (
-            <PrismicNextLink document={post} key={index}>
-              <article className="bg-sky-100 border-b-2 border-orange-600 min-h-full w-full">
-                <PrismicNextImage field={post.data.image} />
-                <div className="m-5">
-                  <h4 className="text-sky-950 mb-3">{post.data.heading}</h4>
-                  <PrismicRichText field={post.data.excerpt} />
+           <PrismicNextLink document={post} key={index}>
+            <article className="bg-white h-full transition-all duration-200 hover:shadow-md">
+                <div className="overflow-hidden">
+                  <PrismicNextImage 
+                    field={post.data.image} 
+                    className="w-full h-auto transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-3.5 border-b-1 border-l-1 border-r-1 sm:min-h-[180px]">
+                  <h4 className="text-sky-950">{post.data.heading}</h4>
+                  <p className="pt-2">{post.data.description}</p>
                 </div>
               </article>
             </PrismicNextLink>
