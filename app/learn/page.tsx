@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 import { asImageSrc, PrismicDocument } from "@prismicio/client";
-import { PrismicRichText, SliceZone } from "@prismicio/react";
+import { SliceZone } from "@prismicio/react";
 import Bounded from "../components/Bounded";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
