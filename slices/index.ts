@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   body_content: dynamic(() => import("./BodyContent")),
+  featured_learn: dynamic(() => import("./FeaturedLearn")),
   featured_whats_on: dynamic(() => import("./FeaturedWhatsOn")),
   hero_banner: dynamic(() => import("./HeroBanner")),
   navigation_menu_item: dynamic(() => import("./NavigationMenuItem")),

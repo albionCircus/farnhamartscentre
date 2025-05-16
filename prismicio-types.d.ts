@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | FeaturedLearnSlice
   | FeaturedWhatsOnSlice
   | NewsletterSlice
   | HeroBannerSlice;
@@ -647,6 +648,51 @@ export type BodyContentSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *FeaturedLearn → Default → Primary*
+ */
+export interface FeaturedLearnSliceDefaultPrimary {
+  /**
+   * Heading field in *FeaturedLearn → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_learn.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+}
+
+/**
+ * Default variation for FeaturedLearn Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedLearnSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedLearnSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedLearn*
+ */
+type FeaturedLearnSliceVariation = FeaturedLearnSliceDefault;
+
+/**
+ * FeaturedLearn Shared Slice
+ *
+ * - **API ID**: `featured_learn`
+ * - **Description**: FeaturedLearn
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedLearnSlice = prismic.SharedSlice<
+  "featured_learn",
+  FeaturedLearnSliceVariation
+>;
+
+/**
  * Primary content in *FeaturedWhatsOn → Default → Primary*
  */
 export interface FeaturedWhatsOnSliceDefaultPrimary {
@@ -1025,6 +1071,10 @@ declare module "@prismicio/client" {
       BodyContentSliceDefaultPrimary,
       BodyContentSliceVariation,
       BodyContentSliceDefault,
+      FeaturedLearnSlice,
+      FeaturedLearnSliceDefaultPrimary,
+      FeaturedLearnSliceVariation,
+      FeaturedLearnSliceDefault,
       FeaturedWhatsOnSlice,
       FeaturedWhatsOnSliceDefaultPrimary,
       FeaturedWhatsOnSliceVariation,

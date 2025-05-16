@@ -1,0 +1,28 @@
+{
+  "id": "featured_learn",
+  "type": "SharedSlice",
+  "name": "FeaturedLearn",
+  "description": "FeaturedLearn",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

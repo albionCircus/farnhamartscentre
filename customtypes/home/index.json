@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "featured_learn": {
+              "type": "SharedSlice"
+            },
             "featured_whats_on": {
               "type": "SharedSlice"
             },

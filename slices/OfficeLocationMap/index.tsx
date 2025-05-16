@@ -24,7 +24,7 @@ const OfficeLocationMap: FC<OfficeLocationMapProps> = ({ slice }) => {
         <div className="w-full sm:w-8/12">
           <LeafletMap />
         </div>
-        <div className="bg-[#f8df9e] p-5 w-full sm:w-4/12">
+        <div className="bg-amber-200 p-5 w-full sm:w-4/12">
           <PrismicRichText field={slice.primary.location_details} />
         </div>
       </div>
