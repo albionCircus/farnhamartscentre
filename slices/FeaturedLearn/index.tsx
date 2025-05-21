@@ -15,7 +15,7 @@ export type FeaturedLearnProps =
  */
 const FeaturedLearn: FC<FeaturedLearnProps> = ({ slice }) => {
   return (
-    <Bounded as="section" data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className="text-charcoal w-full bg-amber-200">
+    <Bounded as="section" data-slice-type={slice.slice_type} data-slice-variation={slice.variation} className="my-6 md:my-8 text-charcoal w-full bg-amber-200">
       <div className="text-center mb-4">
         <PrismicRichText field={slice.primary.heading} />
       </div>
