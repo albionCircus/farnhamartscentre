@@ -11,7 +11,7 @@ export default async function Footer() {
                 <span className="px-2">|</span>
                 <Link href="/accessibility" className=""><p className="text-realTeal text-center">Accessibility</p></Link>
                 <span className="px-2">|</span>
-                <Link href="/terms-and-conditions" className=""><p className="text-realTeal text-center">Terms & Conditions</p></Link>
+                <Link href="/terms-and-conditions" className=""><p className="text-realTeal text-center">Terms and Conditions</p></Link>
             </div>
             <div className="bg-realTeal py-3 flex flex-row justify-center items-center">
                 <p className="text-white text-center">
