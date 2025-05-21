@@ -7,11 +7,17 @@ export default async function Footer() {
     const home = await client.getSingle("home");
     return <footer className="">
             <div className="flex flex-row justify-center items-center bg-gray-200 mt-8 py-5">
-                <Link href="/privacy" className=""><p className="text-realTeal text-center">Privacy Policy</p></Link>
+                <Link href="/privacy">
+                    <p className="text-realTeal text-center">Privacy Policy</p>
+                </Link>
                 <span className="px-2">|</span>
-                <Link href="/accessibility" className=""><p className="text-realTeal text-center">Accessibility</p></Link>
+                <Link href="/accessibility">
+                    <p className="text-realTeal text-center">Accessibility</p>
+                </Link>
                 <span className="px-2">|</span>
-                <Link href="/terms-and-conditions" className=""><p className="text-realTeal text-center">Terms and Conditions</p></Link>
+                <Link href="/terms-and-conditions">
+                    <p className="text-realTeal text-center">Terms and Conditions</p>
+                </Link>
             </div>
             <div className="bg-realTeal py-3 flex flex-row justify-center items-center">
                 <p className="text-white text-center">
